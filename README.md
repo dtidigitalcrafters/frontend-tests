@@ -36,3 +36,6 @@ describe('PadronizacaoViComponent', () => {
   });
 }
 ```
+
+## Utilizar mutation testing
+Verificar a qualidade dos testes unitários utilizando algum teste de mutação. Esses testes fazem alterações no código fonte da aplicação e verificam se os testes são capazes de capturar erros.

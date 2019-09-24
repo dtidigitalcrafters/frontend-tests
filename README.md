@@ -19,7 +19,7 @@ describe('PadronizacaoViComponent', () => {
 }
 ```
 
-**Bom:** Omitir as informações que não fazem sentido para o teste, como inicialização de variáveis, configurações de componentes etc.
+**Bom:** Omitir as informações que não fazem sentido para o teste, como inicialização de variáveis, configurações de componentes etc. Tomar cuidado para sempre criar novos objetos para cada teste.
 ```javascript
 describe('PadronizacaoViComponent', () => {
   function criarObj() {

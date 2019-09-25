@@ -16,8 +16,7 @@ describe('HelloWorldComponent', () => {
       const obj = {
         prop1: 'hello',
         prop2: 'world',
-      };
-      
+      };      
       const result = myClass.foo(obj);
       expect(result).toBe(false);
   });
@@ -27,18 +26,17 @@ describe('HelloWorldComponent', () => {
 **Bom:** Omitir as informações que não fazem sentido para o teste, como inicialização de variáveis, configurações de componentes etc. Tomar cuidado para sempre criar novos objetos para cada teste.
 ```javascript
 describe('HelloWorldComponent', () => {
+  it('deve testar foo', () => {
+      let obj = criarObj();
+      const result = myClass.foo(obj);
+      expect(result).toBe(false);
+  });  
   function criarObj() {
     return {
         prop1: 'hello',
         prop2: 'world',
       };
   }
-
-  it('deve testar foo', () => {
-      let obj = criarObj();
-      const result = myClass.foo(obj);
-      expect(result).toBe(false);
-  });
 }
 ```
 
@@ -61,17 +59,72 @@ describe('HelloWorldComponent', () => {
 
 **Bom** Ao criar um mock de 'dado1', iremos testar apenas o comportamento de 'foo'.
 ```javascript
-describe('HelloWorldComponent', () => {
+describe('HelloWorldComponent', () => {  
+  it('deve testar foo', () => {
+      const dado1 = mockObj();
+      const result = myClass.foo(dado1);
+      expect(result).toBe(false);
+  });
   function mockObj() {
     return {
         prop1: 'hello',
         prop2: 'world',
       };
   }
+}
+```
+
+## Declarar as configurações gerais, os testes e depois as funções de suporte
+Se estamos trabalhando com um arquivo de testes, a parte mais importante são os testes em si. Declarar as variáveis e funções de suporte antes dos testes pode dificultar a leitura dos mesmos.
+
+**Ruim**
+```javascript
+describe('HelloWorldComponent', () => {  
+  function mockObj() {
+    return {
+        prop1: 'hello',
+      };
+  }
+  
+  const serviceMock = {
+    method1 () => {};
+    method2 () => {};
+  };
+  
+  beforeEach(() => {
+    ...
+  });
+  
   it('deve testar foo', () => {
       const dado1 = mockObj();
       const result = myClass.foo(dado1);
       expect(result).toBe(false);
   });
+}
+```
+
+**Bom**
+```javascript
+describe('HelloWorldComponent', () => {  
+  beforeEach(() => {
+    ...
+  });
+  
+  it('deve testar foo', () => {
+      const dado1 = mockObj();
+      const result = myClass.foo(dado1);
+      expect(result).toBe(false);
+  });
+  
+  function mockObj() {
+    return {
+        prop1: 'hello',
+      };
+  }
+  
+  const serviceMock = {
+    method1 () => {};
+    method2 () => {};
+  };
 }
 ```

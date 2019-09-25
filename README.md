@@ -1,4 +1,4 @@
-# Sugestões de padrões e boas práticas para testes em Frontends
+# Padrões e boas práticas para testes em Frontends
 
 ## Utilizar mutation testing
 Verificar a qualidade dos testes unitários utilizando algum teste de mutação. Esses testes fazem alterações no código fonte da aplicação e verificam se os testes são capazes de capturar erros.

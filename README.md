@@ -40,10 +40,10 @@ describe('HelloWorldComponent', () => {
 }
 ```
 
-## Utilização de variáveis globais
-Declarar variáveis, classes, funções, etc fora do escopo do teste.
+## Evitar utilizar variáveis globais
+Evite declarar variáveis, classes, funções, etc fora do escopo do teste.
 
-## Testes unitários não unitários
+## Evitar fazer testes unitários não unitários
 Evitar que os testes unitários executem regras que não fazem parte do escopo do teste.
 
 **Ruim** O método 'foo' precisa de um parâmetro que é calculado pela própria classe. Ao utilizar a classe para gerar o valor de 'dado1', deixamos de testar apenas o comportamento de 'foo'. Além disso, irá gerar uma falsa cobertura de teste, pois o método hello() terá cobertura, mas não necessariamente existe um teste para eles.

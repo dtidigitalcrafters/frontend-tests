@@ -128,3 +128,24 @@ describe('HelloWorldComponent', () => {
   };
 }
 ```
+
+## compileComponents() é assíncrono
+O método compileComponents() é assíncrono e deve ser utilizado em uma chamada beforeEach separada, dentro de um método async(), para garantir que os componentes foram compilados, antes de criarmos uma fixture.
+
+```javascript
+beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [
+      ],
+      declarations: [
+        AppComponent
+      ],
+    }).compileComponents();
+  }));
+  
+beforeEach(() => {
+  fixture = TestBed.createComponent(AppComponent);
+  component = fixture.componentInstance;
+  fixture.detectChanges();
+}
+```

@@ -149,3 +149,37 @@ beforeEach(() => {
   fixture.detectChanges();
 }
 ```
+
+## NO_ERRORS_SCHEMA
+Componentes geralmente possuem outros componentes aninhados dentro, que precisam ser declarados para o correto funcionamento do mesmo.
+Ao utilizar NO_ERRORS_SCHEMA na configuração de nosso TestBed, informamos ao angular para ignorar quaisquer tags inválidas que forem encontradas durante os testes.
+
+**Ruim**
+```javascript
+beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [
+      ],
+      declarations: [
+        AppComponent,
+        HeaderComponent,
+        FooterComponent
+      ],
+      schemas: [ NO_ERRORS_SCHEMA ],
+    }).compileComponents();
+  }));
+```
+
+**Bom**
+```javascript
+beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [
+      ],
+      declarations: [
+        AppComponent
+      ],
+      schemas: [ NO_ERRORS_SCHEMA ],
+    }).compileComponents();
+  }));
+```

@@ -147,7 +147,7 @@ beforeEach(() => {
   fixture = TestBed.createComponent(AppComponent);
   component = fixture.componentInstance;
   fixture.detectChanges();
-}
+});
 ```
 
 ## NO_ERRORS_SCHEMA
